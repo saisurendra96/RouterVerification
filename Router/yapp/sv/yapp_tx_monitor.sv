@@ -21,10 +21,10 @@ class yapp_tx_monitor extends uvm_monitor;
         item_collected_port = new("item_collected_port", this);
     endfunction : new
 
-    function void connect_phase (uvm_phase phase);
+    function void build_phase (uvm_phase phase);
         if(!yapp_vif_config::get(this, get_full_name(), "vif", vif))
             `uvm_error("NOVIF", {"Virtual interface must be set for: ",get_full_name(),".vif"})
-    endfunction : connect_phase
+    endfunction : build_phase
 
     function void start_of_simulation_phase(uvm_phase phase);
         `uvm_info(get_type_name(),{"Start of simulation for ", get_full_name()}, UVM_HIGH)
